@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .window-base {
+    @apply bg-opacity-5 backdrop-blur-sm;
+  }
+  .list-item {
+    @apply text-primay;
+  }
+}
+@layer base {
+  a {
+    display: block;
+    position: relative;
+    padding: 0.1em 0;
+  }
+  a::after {
+    @apply bg-primay;
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 100%;
+    height: 0.1em;
+    opacity: 0;
+    transition: opacity 300ms, transform 300ms;
+  }
+  a:hover::after {
+    opacity: 1;
+    transform: translate3d(0, 0.2em, 0);
+  }
+}
+@layer components {
+  .navbar {
+    @apply flex items-center w-full justify-between;
+  }
+  .title {
+    @apply text-4xl font-bold text-primay;
+  }
+  .list {
+    @apply flex items-center gap-4 [&>li]:list-item;
+  }
+  .window {
+    @apply window-base bg-white;
+  }
+  .window-black {
+    @apply window-base bg-black;
+  }
+  .flex-img {
+    flex: 1 0 auto;
+  }
+}
